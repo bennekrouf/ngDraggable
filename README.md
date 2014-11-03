@@ -25,7 +25,8 @@ angular.module('app', ['ngDraggable']);
 
 Draggable usage:
 ```html
-<div ng-drag="true" ng-drag-data="{obj}" ng-drag-success="onDragComplete($data,$event)" ng-center-anchor="true">
+<div ng-drag="true" ng-drag-data="{obj}" ng-drag-success="onDragComplete($data,$event)" 
+                    ng-center-anchor="true" ng-drag-begin="onDragBegin($data,$event)" ng-drag-stop="onDragStop($data,$event)">
   Draggable div
 </div>
 ```
@@ -33,7 +34,7 @@ Note: ng-center-anchor is optional. If not specified, it defaults to false.
 
 Drop area usage:
 ```html
-<div ng-drop="true" ng-drop-success="onDropComplete($data,$event)" >
+<div ng-drop="true" ng-drop-success="onDropComplete($data,$event)">
   Drop area
 </div>
 ```
@@ -48,6 +49,13 @@ app.controller('MainCtrl', function ($scope) {
     $scope.onDropComplete=function(data,evt){
         console.log("drop success, data:", data);
     }
+    $scope.onDragBegin=function(data,evt){
+        console.log("drag begin, data:", data);
+    }
+    $scope.onDragStop=function(data,evt){
+        console.log("drag stop, data:", data);
+    }
+
  };
 ```
 
